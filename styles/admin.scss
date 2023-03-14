@@ -1,0 +1,27 @@
+// Base
+@import 'normalize.css/normalize.css';
+@import './base/fonts.scss';
+@import './base/mixins.scss';
+@import './base/configuration.scss';
+@import './base/color.scss';
+// Libraries
+// Bootstrap
+// @import url('https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css');
+// (OR) 
+@import 'bootstrap/scss/bootstrap.scss';
+// PrimeNg
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.min.css';
+@import 'primeicons/primeicons.css';
+// Primeflex
+@import 'primeflex/primeflex.css';
+// Pages
+@import './apps/admin/categories.scss';
+@import './apps/admin/products.scss';
+//Shared
+@import './apps/admin/shared/shell.scss';
+//Libs
+@import './libs/ui/ui.scss';
+.none {
+    display: none;
+}

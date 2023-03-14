@@ -1,0 +1,9 @@
+.admin {
+    &-page {}
+    &-img-container {
+        max-width: 4rem;
+        img {
+            width: 100%;
+        }
+    }
+}

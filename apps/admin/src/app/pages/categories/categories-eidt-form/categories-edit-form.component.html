@@ -1,0 +1,54 @@
+<p-toast key="toastState" position="top-right"></p-toast>
+<div class="card">
+    <h5>Edit category form</h5>
+    <div class="p-grid">
+        <div class="p-col-12">
+            <p-toolbar>
+                <div class="p-toolbar-group-left">
+                    <small *ngIf="nameControl.value===currentCategory?.name&&iconControl.value===currentCategory.icon&&colorControl.value===currentCategory.color&&isSubmitted" class="p-error">Change something</small>
+
+                </div>
+                <div class="p-toolbar-group-right">
+                    <p-button styleClass="p-button-primary mr-2" label="Updated" icon="pi pi-plus" (click)="updateButtonClickHandler()"></p-button>
+                    <p-button styleClass="p-button-secondary mr-4" label="Cancel" icon="pi pi-pause" routerLink="/categories"></p-button>
+
+                </div>
+            </p-toolbar>
+        </div>
+    </div>
+    <form [formGroup]="categoryForm">
+        <div class="formgrid grid p-5">
+            <div class="grid">
+                <!-- Left  -->
+                <div class="field col-7">
+                    <div class="grid">
+                        <div class="col-12">
+                            <label for="firstname1">Id</label>
+                            <input id="firstname1" disabled type="text" [value]="paramId" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+
+                        </div>
+                        <div class="col-12">
+                            <label for="firstname1">Name</label>
+                            <input id="firstname1" type="text" [formControl]="nameControl" [value]="nameControl.value" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                            <small *ngIf="nameControl.value===''&&isSubmitted&&nameControl.invalid" class="p-error">Name is required</small>
+                        </div>
+                        <div class="col-12">
+                            <label for="lastname1">Icon</label>
+                            <input id="lastname1" type="text" [formControl]="iconControl" [value]="iconControl.value" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Right  -->
+                <div class="field col-5">
+                    <div>Color</div>
+                    <p-colorPicker [inline]="true" [formControl]="colorControl" [(ngModel)]="colorValue"></p-colorPicker>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+</div>

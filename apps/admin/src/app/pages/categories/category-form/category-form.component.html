@@ -1,0 +1,61 @@
+<p-toast key="stateToast" position="top-right"></p-toast>
+<div class="admin-page">
+    <p-card header="Add categories" subheader="Add or Update Categories">
+        <div class="p-grid mb-4">
+            <div class="p-col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left">
+
+                    </div>
+                    <div class="p-toolbar-group-right">
+                        <p-button (onClick)="onCreateButtonSubmit()" styleClass="p-button-primary mr-4" label="Create" icon="pi pi-plus"></p-button>
+                        <p-button styleClass="p-button-secondary" label="Cancel" icon="pi pi-pause" routerLink="/categories"></p-button>
+
+                    </div>
+                </p-toolbar>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <div class="card p-4">
+                    <h5>Category Form</h5>
+                    <form [formGroup]="categoryForm">
+
+                        <div class="formgrid grid">
+
+                            <div class="field col-7">
+                                <div class="grid">
+                                    <div class="col-12">
+
+                                        <label for="lastname2">Name</label>
+                                        <input [formControl]="name" id="lastname2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                                        <small *ngIf="name.value==='' &&name.invalid &&isSubmit" class="p-error">Name is required</small>
+                                    </div>
+                                    <div class="col-12 mt-6">
+                                        <label for="lastname2">Icon</label>
+                                        <input [formControl]="icon" id="lastname2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                                        <small *ngIf="icon.value==='' &&icon.invalid &&isSubmit" class="p-error">Icon is required</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="field col-5">
+                                <div class="col-12">
+
+                                    <div>Color</div>
+                                    <p-colorPicker [inline]="true" [formControl]="colorControl" format="hex"></p-colorPicker>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </p-card>
+
+
+</div>

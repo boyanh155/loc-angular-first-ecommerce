@@ -1,0 +1,111 @@
+<p-toast key="stateToast" position="top-right"></p-toast>
+<div class="admin-page">
+    <p-card header="Add categories" subheader="Add or Update Categories">
+        <div class="p-grid mb-4">
+            <div class="p-col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left">
+
+                    </div>
+                    <div class="p-toolbar-group-right">
+                        <p-button (onClick)="isEditMode?onUpdateButtonSubmit():onCreateButtonSubmit()" styleClass="p-button-primary mr-4" [label]="isEditMode?'Update':'Create'" icon="pi pi-plus"></p-button>
+                        <p-button styleClass="p-button-secondary" label="Cancel" icon="pi pi-pause" routerLink="/products"></p-button>
+                    </div>
+                </p-toolbar>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <div class="card p-4">
+                    <h5>{{isEditMode?'Update':'Create'}} Form</h5>
+                    <form [formGroup]="productForm">
+                        <div class="formgrid grid">
+                            <!-- Requirement -->
+                            <div class="col-6">
+                                <!-- Name -->
+                                <div class="col-12 field">
+                                    <label for="name">Name</label>
+                                    <input [formControl]="name" id="name" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                                    <small *ngIf="name.value===''" class="p-error">Name is required</small>
+                                </div>
+
+                                <!-- Category AND Brand -->
+                                <div class="col-12 field admin-categorySelected">
+                                    <div class="grid">
+                                        <!-- Brand -->
+                                        <div class="col-6">
+                                            <label for="brand">Brand</label>
+                                            <input id="brand" type="text" pInputText [formControl]="brand" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                                            <small *ngIf="brand.value===''" class="p-error">Brand is required</small>
+                                        </div>
+                                        <!-- Category -->
+                                        <div class="col-6 ">
+                                            <label for="categorySelected">Select category</label><br/>
+                                            <admin-dropdown-categories id='categorySelected' [class]="'w-full admin-categorySelected-select'" (eventCategoryChange)="categoryChange($event)"></admin-dropdown-categories>
+                                            <small *ngIf="countInStock.value<0" class="p-error">Stock is not negative</small>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- Image -->
+                                <div class="col-12 field admin-image ">
+                                    <label for="">Image</label><br/>
+                                    <div class="div" class="p-4 border-1 border-solid border-black-alpha-20 border-round">
+
+                                        <p-image class="admin-image-Img " [src]="image.value" alt="Product" width="100%" [preview]="true"></p-image>
+                                    </div>
+                                </div>
+                                <div class="col-12 field">
+
+                                    <p-fileUpload id="uploadImg" name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" (onSelect)="onSelect($event)" [multiple]="false" accept="image/*" [maxFileSize]="1000000">
+                                        <ng-template pTemplate="content">
+                                            <ul *ngIf="uploadedFile">
+                                                <li>{{uploadedFile.name}} - {{uploadedFile.size}} bytes</li>
+                                            </ul>
+                                        </ng-template>
+                                    </p-fileUpload>
+                                </div>
+
+                            </div>
+                            <div class="col-6">
+                                <!-- Stock -->
+                                <div class="col-12 field">
+                                    <label for="countInStock">Count in Stock</label><br/>
+                                    <p-inputNumber [formControl]="countInStock" [showButtons]="true" [min]="0" buttonLayout="horizontal" inputId="countInStock" spinnerMode="horizontal" [step]="1" decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus"
+                                        decrementButtonIcon="pi pi-minus" mode="decimal">
+                                    </p-inputNumber>
+                                    <small *ngIf="countInStock.value<0" class="p-error">Stock is not negative</small>
+
+                                </div>
+                                <!-- Price -->
+                                <div class="col-12 field">
+                                    <label for="price">Price for one</label>
+                                    <p-inputNumber id="price" [min]="0" [formControl]="price" mode="currency" currency="USD" class="w-full"></p-inputNumber>
+                                    <small *ngIf="price.value===0" class="p-error">Price is not zero value</small>
+                                </div>
+                                <!-- Description -->
+                                <div class="col-12 field">
+                                    <label for="description">Description</label>
+                                    <input id="description" type="text" pInputText [formControl]="description" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                                    <small *ngIf="brand.value===''" class="p-error">Description is required</small>
+                                </div>
+                                <!-- Rich description -->
+                                <div class="col-12 field admin-richDes">
+                                    <label for="richDes">More details</label><br/>
+                                    <textarea class="admin-richDes-textArea" [rows]="5" [cols]="30" pInputTextarea [autoResize]="false"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </p-card>
+
+
+</div>

@@ -2,7 +2,10 @@
   "name": "loc-angular",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "store": "nx run loc-udemy:serve:development",
+    "admin": "nx run admin:serve:development"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~15.1.0",
@@ -14,6 +17,12 @@
     "@angular/platform-browser-dynamic": "~15.1.0",
     "@angular/router": "~15.1.0",
     "@nrwl/angular": "15.7.2",
+    "bootstrap": "^5.2.3",
+    "create-nx-workspace": "^15.7.2",
+    "normalize.css": "^8.0.1",
+    "primeflex": "^3.3.0",
+    "primeicons": "^6.0.1",
+    "primeng": "^15.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -37,7 +46,7 @@
     "@schematics/angular": "~15.1.0",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.36.1",
     "cypress": "^12.2.0",
     "eslint": "~8.15.0",
@@ -51,5 +60,8 @@
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
     "typescript": "~4.8.2"
+  },
+  "nx": {
+    "targets": {}
   }
 }

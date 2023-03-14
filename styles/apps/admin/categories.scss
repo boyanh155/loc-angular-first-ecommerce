@@ -1,0 +1,26 @@
+.admin {
+    &-page {}
+    &-controlGroup {
+        max-width: 8em;
+        &-control {
+            button {}
+        }
+    }
+    &-colorPickerGroup {
+        .p-colorpicker-preview {
+            border-radius: 50%;
+        }
+    }
+    &-categorySelected {
+        &-select {}
+    }
+    &-richDes {
+        &-textArea {
+            resize: none;
+        }
+    }
+    &-image {
+        max-width: 18rem;
+        max-height: 18rem;
+    }
+}

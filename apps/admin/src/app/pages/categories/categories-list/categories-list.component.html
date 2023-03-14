@@ -1,0 +1,59 @@
+<p-toast key="stateToast" position="top-right"></p-toast>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<div class="admin-page">
+    <p-card header="Categories" subheader="List of all categories">
+        <div class="p-grid">
+            <div class="p-col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left">
+                        <p-button styleClass="p-button-success " label="New" icon="pi pi-plus" routerLink="form"></p-button>
+                    </div>
+                </p-toolbar>
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-col-12">
+                <p-table [value]="categories" styleClass="p-datatable-gridlines">
+                    <ng-template pTemplate="header">
+                        <tr>
+
+                            <th pSortableColumn="name">
+                                Name
+                                <p-sortIcon field="name">
+
+                                </p-sortIcon>
+                            </th>
+                            <th>Icon</th>
+                            <th>Color</th>
+
+                            <th>Control</th>
+
+
+                        </tr>
+                    </ng-template>
+                    <ng-template #currentCategoryId pTemplate="body" let-category>
+                        <tr>
+
+                            <td>{{category.name}}</td>
+                            <td><i style="font-size: 2rem" class="pi" [ngClass]="'pi-'+category.icon"></i>
+                                <p *ngIf="categories.length===0">Tai lai</p>
+                            </td>
+                            <td class="admin-colorPickerGroup">
+                                <p-colorPicker [(ngModel)]="category.color" [disabled]="true"></p-colorPicker>
+
+                            </td>
+
+
+                            <td class="admin-controlGroup">
+                                <p-button [disabled]="categories.length ===0? true :false" class="admin-controlGroup-control" styleClass="p-button-success mr-2" icon="pi pi-file-edit" [routerLink]="'/categories/' +category.id"></p-button>
+                                <p-button [disabled]="categories.length ===0? true :false" class="admin-controlGroup-control" styleClass="p-button-danger " icon="pi pi-trash" (onClick)="deleteConfirm(category.id)"></p-button>
+                            </td>
+
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </p-card>
+</div>
